@@ -38,7 +38,7 @@
 **
 ****************************************************************************/
 
-#include "qtquickcontrolsapplication.h"
+#include "QtQuickControlsApplication.h"
 #include <QtQml/QQmlApplicationEngine>
 
 int main(int argc, char *argv[])

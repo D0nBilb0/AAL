@@ -67,6 +67,13 @@ ApplicationWindow {
                     positionLabel.text = "bath" + " " + mouse.x + " " + mouse.y;
                 }
         }
+
+        Text {
+                text: "bathroom"
+                anchors.horizontalCenter: bath.horizontalCenter
+                anchors.verticalCenter: bath.verticalCenter
+                font.pointSize: 12; font.bold: false
+            }
     }
     Rectangle{
         id: kitchen
@@ -83,6 +90,12 @@ ApplicationWindow {
                     positionLabel.text = "kitchen" + " " + mouse.x + " " + mouse.y;
                 }
         }
+        Text {
+                text: "kitchen"
+                anchors.horizontalCenter: kitchen.horizontalCenter
+                anchors.verticalCenter: kitchen.verticalCenter
+                font.pointSize: 12; font.bold: false
+            }
     }
     Rectangle{
         id: hall
@@ -99,6 +112,12 @@ ApplicationWindow {
                     positionLabel.text = "hall" + " " + mouse.x + " " + mouse.y;
                 }
         }
+        Text {
+                text: "hall"
+                anchors.horizontalCenter: hall.horizontalCenter
+                anchors.verticalCenter: hall.verticalCenter
+                font.pointSize: 12; font.bold: false
+            }
     }
     Rectangle{
         id: bedRoom
@@ -115,6 +134,12 @@ ApplicationWindow {
                     positionLabel.text = "bedRoom" + " " + mouse.x + " " + mouse.y;
                 }
         }
+        Text {
+                text: "bedroom"
+                anchors.horizontalCenter: bedRoom.horizontalCenter
+                anchors.verticalCenter: bedRoom.verticalCenter
+                font.pointSize: 12; font.bold: false
+            }
     }
     Rectangle{
         id: livingRoom
@@ -131,6 +156,12 @@ ApplicationWindow {
                     positionLabel.text = "livingRoom" + " " + mouse.x + " " + mouse.y;
                 }
         }
+        Text {
+                text: "livingroom"
+                anchors.horizontalCenter: livingRoom.horizontalCenter
+                anchors.verticalCenter: livingRoom.verticalCenter
+                font.pointSize: 12; font.bold: false
+            }
     }
 
     Column {

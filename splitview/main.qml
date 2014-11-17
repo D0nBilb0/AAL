@@ -67,6 +67,7 @@ ApplicationWindow {
         border.width: 1
         text : "bathroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
+        temperature : 20
 
         onRoomClicked: {
             positionLabel.text = positionLabel.text = "bath" + " " + xPos + " " + yPos
@@ -85,6 +86,7 @@ ApplicationWindow {
         border.width: 1
         text : "kitchen"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
+        temperature : 20
 
         onRoomClicked: {
             positionLabel.text = positionLabel.text = "kitchen" + " " + xPos + " " + yPos
@@ -103,6 +105,7 @@ ApplicationWindow {
         border.width: 1
         text : "hall"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
+        temperature : 20
 
         onRoomClicked: {
             positionLabel.text = positionLabel.text = "hall" + " " + xPos + " " + yPos
@@ -121,6 +124,7 @@ ApplicationWindow {
         border.width: 1
         text : "bedroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
+        temperature : 20
 
         onRoomClicked: {
             positionLabel.text = positionLabel.text = "bedroom" + " " + xPos + " " + yPos
@@ -139,6 +143,7 @@ ApplicationWindow {
         border.width: 1
         text : "livingroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
+        temperature : 20
 
         onRoomClicked: {
             selectedRoom = objectName;
@@ -178,25 +183,27 @@ ApplicationWindow {
 
             Label {
                 id : tempBath
-                text: "  bath:           0°C"
+                text: "  bath: " + bath.temperature + "°C"
             }
             Label {
                 id : tempKitchen
-                text: "  kitchen:       0°C"
+                text: "  kitchen: " + kitchen.temperature + "°C"
             }
             Label {
                 id : tempHall
-                text: "  hall:             0°C"
+                text: "  hall: " + hall.temperature + "°C"
             }
             Label {
                 id : tempBedroom
-                text: "  bedroom:    0°C"
+                text: "  bedroom: " + bedRoom.temperature + "°C"
             }
             Label {
                 id : tempLivingroom
-                text: "  livingroom:  0°C"
+                text: "  livingroom: " + livingRoom.temperature + "°C"
             }
         }
+
+
     }
 
 }

@@ -52,116 +52,108 @@ ApplicationWindow {
     height: 400
     id: appWindow
 
+    property string selectedRoom
 
-    Rectangle{
+
+    Room {
         id: bath
         x: 0
         y: 0
         width: appWindow.width/4
         height: appWindow.height/3
-        color: "lightgreen"
-        MouseArea {
-            id: bathArea
-            anchors.fill: parent
-            onClicked: {
-                    positionLabel.text = "bath" + " " + mouse.x + " " + mouse.y;
-                }
-        }
+        objectName: "bath"
+        color: "lightgrey"
+        border.color: "black"
+        border.width: 1
+        text : "bathroom"
+        bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-        Text {
-                text: "bathroom"
-                anchors.horizontalCenter: bath.horizontalCenter
-                anchors.verticalCenter: bath.verticalCenter
-                font.pointSize: 12; font.bold: false
-            }
+        onRoomClicked: {
+            positionLabel.text = positionLabel.text = "bath" + " " + xPos + " " + yPos
+            selectedRoom = objectName;
+        }
     }
-    Rectangle{
+    Room {
         id: kitchen
         x: appWindow.width/4
         y: 0
         width: appWindow.width/4
         height: appWindow.height/3
+        objectName: "kitchen"
         color: "white"
-        MouseArea {
-            id: kitchenArea
-            anchors.fill: parent
-            onClicked: {
+        border.color: "black"
+        border.width: 1
+        text : "kitchen"
+        bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-                    positionLabel.text = "kitchen" + " " + mouse.x + " " + mouse.y;
-                }
+        onRoomClicked: {
+            positionLabel.text = positionLabel.text = "kitchen" + " " + xPos + " " + yPos
+            selectedRoom = objectName;
         }
-        Text {
-                text: "kitchen"
-                anchors.horizontalCenter: kitchen.horizontalCenter
-                anchors.verticalCenter: kitchen.verticalCenter
-                font.pointSize: 12; font.bold: false
-            }
     }
-    Rectangle{
+    Room {
         id: hall
         x: 0
         y: appWindow.height/3
         width: appWindow.width*2/4
         height: appWindow.height/3
+        objectName: "hall"
         color: "lightblue"
-        MouseArea {
-            id: hallArea
-            anchors.fill: parent
-            onClicked: {
+        border.color: "black"
+        border.width: 1
+        text : "hall"
+        bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-                    positionLabel.text = "hall" + " " + mouse.x + " " + mouse.y;
-                }
+        onRoomClicked: {
+            positionLabel.text = positionLabel.text = "hall" + " " + xPos + " " + yPos
+            selectedRoom = objectName;
         }
-        Text {
-                text: "hall"
-                anchors.horizontalCenter: hall.horizontalCenter
-                anchors.verticalCenter: hall.verticalCenter
-                font.pointSize: 12; font.bold: false
-            }
     }
-    Rectangle{
+    Room {
         id: bedRoom
         x: 0
         y: appWindow.height*2/3
         width: appWindow.width*2/4
         height: appWindow.height/3
+        objectName: "bedroom"
         color: "lightsteelblue"
-        MouseArea {
-            id: bedArea
-             anchors.fill: parent
-            onClicked: {
+        border.color: "black"
+        border.width: 1
+        text : "bedroom"
+        bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-                    positionLabel.text = "bedRoom" + " " + mouse.x + " " + mouse.y;
-                }
+        onRoomClicked: {
+            positionLabel.text = positionLabel.text = "bedroom" + " " + xPos + " " + yPos
+            selectedRoom = objectName;
         }
-        Text {
-                text: "bedroom"
-                anchors.horizontalCenter: bedRoom.horizontalCenter
-                anchors.verticalCenter: bedRoom.verticalCenter
-                font.pointSize: 12; font.bold: false
-            }
     }
-    Rectangle{
+    Room {
         id: livingRoom
         x: appWindow.width*2/4
         y: 0
+        objectName: "livingRoom"
         width: appWindow.width/4
         height: appWindow.height
-        color: "red"
-        MouseArea {
-            id: livingArea
-            anchors.fill: parent
-            onClicked: {
+        color: "#f76161"
+        border.color: "black"
+        border.width: 1
+        text : "livingroom"
+        bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-                    positionLabel.text = "livingRoom" + " " + mouse.x + " " + mouse.y;
-                }
+        onRoomClicked: {
+            selectedRoom = objectName;
+            positionLabel.text = positionLabel.text = "livingroom" + " " + xPos + " " + yPos
+            //bulpColor = "yellow"
         }
-        Text {
-                text: "livingroom"
-                anchors.horizontalCenter: livingRoom.horizontalCenter
-                anchors.verticalCenter: livingRoom.verticalCenter
-                font.pointSize: 12; font.bold: false
-            }
+    }
+
+    Info {
+        x: appWindow.width*3/4
+        y: 0
+        width: appWindow.width*1/4
+        height: appWindow.height
+
+//        model: AAAAAAAAAAA{}
     }
 
     Column {
@@ -173,7 +165,37 @@ ApplicationWindow {
 
         Label {
             id: positionLabel
-            text: "helloWorld"
+            text: " programm running"
+        }
+
+        Column {
+            id : tempCol
+            Label {
+                text : " room temperatures:"
+                font.pointSize: 11
+                color: "#0000F0"
+            }
+
+            Label {
+                id : tempBath
+                text: "  bath:           0°C"
+            }
+            Label {
+                id : tempKitchen
+                text: "  kitchen:       0°C"
+            }
+            Label {
+                id : tempHall
+                text: "  hall:             0°C"
+            }
+            Label {
+                id : tempBedroom
+                text: "  bedroom:    0°C"
+            }
+            Label {
+                id : tempLivingroom
+                text: "  livingroom:  0°C"
+            }
         }
     }
 

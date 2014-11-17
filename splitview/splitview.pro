@@ -6,7 +6,9 @@ include(src/src.pri)
 include(./shared/shared.pri)
 
 OTHER_FILES += \
-    main.qml
+    main.qml \
+    Room.qml \
+    Info.qml
 
 RESOURCES += \
     resources.qrc

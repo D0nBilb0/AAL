@@ -8,7 +8,8 @@ include(./shared/shared.pri)
 OTHER_FILES += \
     main.qml \
     Room.qml \
-    Info.qml
+    Info.qml \
+    Couch.qml
 
 RESOURCES += \
     resources.qrc

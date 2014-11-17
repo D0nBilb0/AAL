@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>Room.qml</file>
         <file>Info.qml</file>
+        <file>Couch.qml</file>
     </qresource>
 </RCC>

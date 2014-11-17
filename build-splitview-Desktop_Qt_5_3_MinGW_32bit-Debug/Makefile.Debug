@@ -106,6 +106,7 @@ compiler_rcc_clean:
 debug/qrc_resources.cpp: ../splitview/resources.qrc \
 		../splitview/Room.qml \
 		../splitview/Info.qml \
+		../splitview/Couch.qml \
 		../splitview/main.qml
 	D:\Qt\5.3\mingw482_32\bin\rcc.exe -name resources ..\splitview\resources.qrc -o debug\qrc_resources.cpp
 

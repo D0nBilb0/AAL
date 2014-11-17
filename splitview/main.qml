@@ -48,8 +48,8 @@ import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     visible: true
-    width: 600
-    height: 400
+    width: 1200
+    height: 900
     id: appWindow
 
     property string selectedRoom
@@ -70,7 +70,7 @@ ApplicationWindow {
         temperature : 20
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "bath" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "  bath" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -89,7 +89,7 @@ ApplicationWindow {
         temperature : 20
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "kitchen" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "  kitchen" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -108,7 +108,7 @@ ApplicationWindow {
         temperature : 20
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "hall" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "  hall" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -127,7 +127,7 @@ ApplicationWindow {
         temperature : 20
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "bedroom" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "  bedroom" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -145,9 +145,17 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
 
+        Couch {
+           x: parent.width * 0.1
+           y: parent.height * 0.90
+           width : parent.width * 0.8
+           height : 100
+           color: "#7c3e04"
+        }
+
         onRoomClicked: {
             selectedRoom = objectName;
-            positionLabel.text = positionLabel.text = "livingroom" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "  livingroom" + " " + xPos + " " + yPos
             //bulpColor = "yellow"
         }
     }
@@ -170,7 +178,7 @@ ApplicationWindow {
 
         Label {
             id: positionLabel
-            text: " programm running"
+            text: "  programm running"
         }
 
         Column {
@@ -203,6 +211,18 @@ ApplicationWindow {
             }
         }
 
+        Column {
+            id : positionSensor
+            Label {
+                text : " position Sensor:"
+                font.pointSize: 11
+                color: "#0000F0"
+            }
+
+            Label {
+                text: "  poition sensor: " + selectedRoom
+            }
+        }
 
     }
 

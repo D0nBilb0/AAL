@@ -54,6 +54,16 @@ ApplicationWindow {
 
     property string selectedRoom
 
+    Image {
+        x: 0
+        y: 0
+        width : parent.width
+        height: parent.height
+//        source : "images/AAL_Grundriss_clear.png"
+        source : "images/Grundriss.png"
+    }
+
+
 
     Room {
         id: bath
@@ -62,9 +72,9 @@ ApplicationWindow {
         width: appWindow.width/4
         height: appWindow.height/3
         objectName: "bath"
-        color: "lightgrey"
-        border.color: "black"
-        border.width: 1
+//        color: "lightgrey"
+//        border.color: "black"
+//        border.width: 1
         text : "bathroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -81,9 +91,9 @@ ApplicationWindow {
         width: appWindow.width/4
         height: appWindow.height/3
         objectName: "kitchen"
-        color: "white"
-        border.color: "black"
-        border.width: 1
+//        color: "white"
+//        border.color: "black"
+//        border.width: 1
         text : "kitchen"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -100,9 +110,9 @@ ApplicationWindow {
         width: appWindow.width*2/4
         height: appWindow.height/3
         objectName: "hall"
-        color: "lightblue"
-        border.color: "black"
-        border.width: 1
+//        color: "lightblue"
+//        border.color: "black"
+//        border.width: 1
         text : "hall"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -119,9 +129,9 @@ ApplicationWindow {
         width: appWindow.width*2/4
         height: appWindow.height/3
         objectName: "bedroom"
-        color: "lightsteelblue"
-        border.color: "black"
-        border.width: 1
+//        color: "lightsteelblue"
+//        border.color: "black"
+//        border.width: 1
         text : "bedroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -138,9 +148,9 @@ ApplicationWindow {
         objectName: "livingRoom"
         width: appWindow.width/4
         height: appWindow.height
-        color: "#f76161"
-        border.color: "black"
-        border.width: 1
+//        color: "#f76161"
+//        border.color: "black"
+//        border.width: 1
         text : "livingroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20

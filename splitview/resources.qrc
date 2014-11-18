@@ -4,5 +4,7 @@
         <file>Room.qml</file>
         <file>Info.qml</file>
         <file>Couch.qml</file>
+        <file>images/AAL_Grundriss_clear.png</file>
+        <file>images/Grundriss.png</file>
     </qresource>
 </RCC>

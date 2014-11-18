@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Rectangle{
+Item{
 
     property alias text: textField.text
     property alias bulpColor : lightBulp.color

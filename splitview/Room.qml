@@ -3,6 +3,8 @@ import QtQuick 2.0
 Item{
 
     property alias text: textField.text
+    property alias lightXpos: lightBulp.x
+    property alias lightYpos: lightBulp.y
     property alias bulpColor : lightBulp.color
     property int temperature
 
@@ -25,7 +27,7 @@ Item{
 
     Rectangle {
         id: lightBulp
-        width : (parent.width<parent.height?parent.width:parent.height) / 3
+        width : (parent.width<parent.height?parent.width:parent.height) / 5
         height: width
         border.color: "black"
         border.width: 1

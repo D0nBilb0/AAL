@@ -9,7 +9,9 @@ OTHER_FILES += \
     main.qml \
     Room.qml \
     Info.qml \
-    Couch.qml
+    Couch.qml \
+    InfoPanel.qml \
+    Bed.qml
 
 RESOURCES += \
     resources.qrc

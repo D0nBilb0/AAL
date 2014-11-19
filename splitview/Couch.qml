@@ -21,7 +21,8 @@ Rectangle {
             text : "lie down"
 
             onClicked: {
-               selectedRoom = "chill mode activated"
+               selectedRoom = "chill mode activated (living room)"
+               tvState = false
             }
         }
     }

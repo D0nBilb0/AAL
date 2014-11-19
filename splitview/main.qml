@@ -53,14 +53,15 @@ ApplicationWindow {
     id: appWindow
 
     property string selectedRoom
+    property bool tvState: false
 
     Image {
         x: 0
         y: 0
         width : parent.width
         height: parent.height
-//        source : "images/AAL_Grundriss_clear.png"
-        source : "images/Grundriss.png"
+        source : "images/AAL_Grundriss_clear.png"
+//        source : "images/Grundriss.png"
     }
 
 
@@ -79,8 +80,11 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
 
+        lightXpos: parent.x+10
+        lightYpos: parent.y+10
+
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "  bath" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  bath" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -98,8 +102,11 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
 
+        lightXpos: parent.x+10
+        lightYpos: parent.y+10
+
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "  kitchen" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  kitchen" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -117,8 +124,11 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
 
+        lightXpos: parent.x+10
+        lightYpos: parent.y+10
+
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "  hall" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  hall" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -136,8 +146,21 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
 
+        lightXpos: parent.x+10
+        lightYpos: parent.y+10
+
+        Bed {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+            width : parent.width * 0.5
+            height : 100
+            color: "#7c3e04"
+        }
+
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "  bedroom" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  bedroom" + " " + xPos + " " + yPos
             selectedRoom = objectName;
         }
     }
@@ -155,17 +178,55 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
 
+        lightXpos: parent.x+10
+        lightYpos: parent.y+10
+
         Couch {
-           x: parent.width * 0.1
-           y: parent.height * 0.90
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 30
+//           x: parent.width * 0.1
+//           y: parent.height * 0.90
            width : parent.width * 0.8
            height : 100
            color: "#7c3e04"
         }
 
+        Rectangle {
+            id: televisionLR
+            anchors.bottom : parent.bottom
+            anchors.bottomMargin: 150;
+            anchors.right: parent.right
+            anchors.rightMargin: 50
+            width: 100
+            height: 100
+            color: tvState === true ? "#0000FF" : "#000000"
+
+            Text {
+                id : textFieldTV
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                font.pointSize: 11; font.bold: false
+                color: "#FFFFFF"
+                text : "TV"
+            }
+
+            MouseArea {
+                id: mouseAreaTV
+                anchors.fill: parent
+                onClicked: {
+                        if (tvState === true)
+                            tvState = false
+                        else
+                            tvState = true
+                    }
+            }
+        }
+
         onRoomClicked: {
             selectedRoom = objectName;
-            positionLabel.text = positionLabel.text = "  livingroom" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  livingroom" + " " + xPos + " " + yPos
             //bulpColor = "yellow"
         }
     }
@@ -179,8 +240,8 @@ ApplicationWindow {
 //        model: AAAAAAAAAAA{}
     }
 
-    Column {
-        id: infoCol
+
+    InfoPanel {
         x: appWindow.width*3/4
         y: 0
         width: appWindow.width*1/4
@@ -188,52 +249,8 @@ ApplicationWindow {
 
         Label {
             id: positionLabel
-            text: "  programm running"
+            text: "\n\n  programm running"
         }
-
-        Column {
-            id : tempCol
-            Label {
-                text : " room temperatures:"
-                font.pointSize: 11
-                color: "#0000F0"
-            }
-
-            Label {
-                id : tempBath
-                text: "  bath: " + bath.temperature + "°C"
-            }
-            Label {
-                id : tempKitchen
-                text: "  kitchen: " + kitchen.temperature + "°C"
-            }
-            Label {
-                id : tempHall
-                text: "  hall: " + hall.temperature + "°C"
-            }
-            Label {
-                id : tempBedroom
-                text: "  bedroom: " + bedRoom.temperature + "°C"
-            }
-            Label {
-                id : tempLivingroom
-                text: "  livingroom: " + livingRoom.temperature + "°C"
-            }
-        }
-
-        Column {
-            id : positionSensor
-            Label {
-                text : " position Sensor:"
-                font.pointSize: 11
-                color: "#0000F0"
-            }
-
-            Label {
-                text: "  poition sensor: " + selectedRoom
-            }
-        }
-
     }
 
 }

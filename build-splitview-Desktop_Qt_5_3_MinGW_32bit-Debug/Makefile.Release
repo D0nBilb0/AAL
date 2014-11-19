@@ -104,10 +104,13 @@ compiler_rcc_make_all: release/qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resources.cpp
 release/qrc_resources.cpp: ../splitview/resources.qrc \
+		../splitview/Bed.qml \
 		../splitview/Room.qml \
+		../splitview/InfoPanel.qml \
 		../splitview/Info.qml \
 		../splitview/Couch.qml \
-		../splitview/main.qml
+		../splitview/main.qml \
+		../splitview/images/AAL_Grundriss_clear.png
 	D:\Qt\5.3\mingw482_32\bin\rcc.exe -name resources ..\splitview\resources.qrc -o release\qrc_resources.cpp
 
 compiler_moc_header_make_all:

@@ -70,5 +70,4 @@ Column {
             text: "  radio: "
         }
     }
-
 }

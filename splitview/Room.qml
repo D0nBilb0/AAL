@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
-Item{
+//Item {
+Rectangle{
 
     property alias text: textField.text
     property alias lightXpos: lightBulp.x

@@ -7,5 +7,6 @@
         <file>images/AAL_Grundriss_clear.png</file>
         <file>InfoPanel.qml</file>
         <file>Bed.qml</file>
+        <file>images/Grundriss.png</file>
     </qresource>
 </RCC>

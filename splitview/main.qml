@@ -42,7 +42,7 @@
 
 
 
-import QtQuick 2.2
+import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.0
 
@@ -50,21 +50,31 @@ ApplicationWindow {
     visible: true
     width: 1200
     height: 900
+    title: qsTr("AAL")
     id: appWindow
 
     property string selectedRoom
     property bool tvState: false
+    property int curTime: 12
 
-    Image {
-        x: 0
-        y: 0
-        width : parent.width
-        height: parent.height
-        source : "images/AAL_Grundriss_clear.png"
-//        source : "images/Grundriss.png"
-    }
+//    menuBar: MenuBar {
+//        Menu {
+//            title: qsTr("File")
+//            MenuItem {
+//                text: qsTr("Exit")
+//                onTriggered: Qt.quit();
+//            }
+//        }
+//    }
 
-
+//    Image {
+//        x: 0
+//        y: 0
+//        width : parent.width
+//        height: parent.height
+//        source : "images/AAL_Grundriss_clear.png"
+////        source : "images/Grundriss.png"
+//    }
 
     Room {
         id: bath
@@ -73,9 +83,9 @@ ApplicationWindow {
         width: appWindow.width/4
         height: appWindow.height/3
         objectName: "bath"
-//        color: "lightgrey"
-//        border.color: "black"
-//        border.width: 1
+        color: "lightgrey"
+        border.color: "black"
+        border.width: 1
         text : "bathroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -95,9 +105,9 @@ ApplicationWindow {
         width: appWindow.width/4
         height: appWindow.height/3
         objectName: "kitchen"
-//        color: "white"
-//        border.color: "black"
-//        border.width: 1
+        color: "white"
+        border.color: "black"
+        border.width: 1
         text : "kitchen"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -117,9 +127,9 @@ ApplicationWindow {
         width: appWindow.width*2/4
         height: appWindow.height/3
         objectName: "hall"
-//        color: "lightblue"
-//        border.color: "black"
-//        border.width: 1
+        color: "lightblue"
+        border.color: "black"
+        border.width: 1
         text : "hall"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -139,9 +149,9 @@ ApplicationWindow {
         width: appWindow.width*2/4
         height: appWindow.height/3
         objectName: "bedroom"
-//        color: "lightsteelblue"
-//        border.color: "black"
-//        border.width: 1
+        color: "lightsteelblue"
+        border.color: "black"
+        border.width: 1
         text : "bedroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -171,9 +181,9 @@ ApplicationWindow {
         objectName: "livingRoom"
         width: appWindow.width/4
         height: appWindow.height
-//        color: "#f76161"
-//        border.color: "black"
-//        border.width: 1
+        color: "#f76161"
+        border.color: "black"
+        border.width: 1
         text : "livingroom"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
         temperature : 20
@@ -231,21 +241,45 @@ ApplicationWindow {
         }
     }
 
-    Info {
-        x: appWindow.width*3/4
-        y: 0
-        width: appWindow.width*1/4
-        height: appWindow.height
+//    Info {
+//        x: appWindow.width*3/4
+//        y: 0
+//        width: appWindow.width*1/4
+//        height: appWindow.height/2
 
-//        model: AAAAAAAAAAA{}
+////        model: AAAAAAAAAAA{}
+//    }
+
+    Slider {
+        id: slider
+        minimumValue: 0
+        maximumValue: 23
+        value: 12
+        stepSize: 1
+        tickmarksEnabled: true
+        anchors.bottom : parent.bottom
+        anchors.bottomMargin: 10;
+        anchors.right: parent.right
+        anchors.rightMargin: 50
+        onValueChanged: curTime = value
+
+
+        Label {
+            anchors.bottom : parent.top
+            anchors.bottomMargin: 10;
+//            anchors.right: parent.right
+//            anchors.rightMargin: 50
+
+            text : curTime + ":00 Uhr"
+        }
+
     }
-
 
     InfoPanel {
         x: appWindow.width*3/4
         y: 0
         width: appWindow.width*1/4
-        height: appWindow.height
+        height: appWindow.height*3/4
 
         Label {
             id: positionLabel

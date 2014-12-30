@@ -48,14 +48,22 @@ import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     visible: true
-    width: 1200
-    height: 900
-    title: qsTr("AAL")
+    width: 1600
+    height: 980
+    title: qsTr("AAL Projekt Team 1")
     id: appWindow
 
-    property string selectedRoom
+    property string selectedRoom : "Flur"
     property bool tvState: false
+    property bool radioState: false
+    property bool telefonState: true
+    property string houseState: "  normal"
     property int curTime: 12
+    property string textColor: "black"
+    property int temperature: 22
+    property int omaXpos: width * 0.1
+    property int omaYPos: height * 0.5
+    property string soundImage: "images/Sound.png"
 
 //    menuBar: MenuBar {
 //        Menu {
@@ -67,14 +75,21 @@ ApplicationWindow {
 //        }
 //    }
 
-//    Image {
-//        x: 0
-//        y: 0
-//        width : parent.width
-//        height: parent.height
+
+    Image {
+        x: 0
+        y: 0
+        width : parent.width
+        height: parent.height
 //        source : "images/AAL_Grundriss_clear.png"
-////        source : "images/Grundriss.png"
-//    }
+        source : "images/Grundriss.png"
+    }
+
+    Oma{
+        id: omaImage
+        x: omaXpos
+        y: omaYPos
+    }
 
     Room {
         id: bath
@@ -82,20 +97,23 @@ ApplicationWindow {
         y: 0
         width: appWindow.width/4
         height: appWindow.height/3
-        objectName: "bath"
-        color: "lightgrey"
-        border.color: "black"
-        border.width: 1
-        text : "bathroom"
+        objectName: "Bad"
+//        color: "lightgrey"
+//        border.color: "black"
+//        border.width: 1
+        text : "Bad"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
-        temperature : 20
 
         lightXpos: parent.x+10
         lightYpos: parent.y+10
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  bath" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  Bad" + " " + xPos + " " + yPos
             selectedRoom = objectName;
+            omaXpos = xPos;
+            omaYPos = yPos;
+            telefonState = true
+            houseState = "  normal"
         }
     }
     Room {
@@ -104,20 +122,23 @@ ApplicationWindow {
         y: 0
         width: appWindow.width/4
         height: appWindow.height/3
-        objectName: "kitchen"
-        color: "white"
-        border.color: "black"
-        border.width: 1
-        text : "kitchen"
+        objectName: "Küche"
+//        color: "white"
+//        border.color: "black"
+//        border.width: 1
+        text : "Küche"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
-        temperature : 20
 
         lightXpos: parent.x+10
         lightYpos: parent.y+10
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  kitchen" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  Küche" + " " + xPos + " " + yPos
             selectedRoom = objectName;
+            omaXpos = xPos + bath.width;
+            omaYPos = yPos;
+            telefonState = true
+            houseState = "  normal"
         }
     }
     Room {
@@ -126,20 +147,23 @@ ApplicationWindow {
         y: appWindow.height/3
         width: appWindow.width*2/4
         height: appWindow.height/3
-        objectName: "hall"
-        color: "lightblue"
-        border.color: "black"
-        border.width: 1
-        text : "hall"
+        objectName: "Flur"
+//        color: "lightblue"
+//        border.color: "black"
+//        border.width: 1
+        text : "Flur"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
-        temperature : 20
 
         lightXpos: parent.x+10
         lightYpos: parent.y+10
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  hall" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  Flur" + " " + xPos + " " + yPos
             selectedRoom = objectName;
+            omaXpos = xPos;
+            omaYPos = yPos + bath.height;
+            telefonState = true
+            houseState = "  normal"
         }
     }
     Room {
@@ -148,70 +172,93 @@ ApplicationWindow {
         y: appWindow.height*2/3
         width: appWindow.width*2/4
         height: appWindow.height/3
-        objectName: "bedroom"
-        color: "lightsteelblue"
-        border.color: "black"
-        border.width: 1
-        text : "bedroom"
+        objectName: "Schlafzimmer"
+//        color: "lightsteelblue"
+//        border.color: "black"
+//        border.width: 1
+        text : "Schlafzimmer"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
-        temperature : 20
 
         lightXpos: parent.x+10
         lightYpos: parent.y+10
 
         Bed {
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
+            anchors.bottomMargin: parent.height * 0.3
+            anchors.top: parent.top
+            anchors.topMargin: parent.height*0.3
             anchors.left: parent.left
-            anchors.leftMargin: 30
-            width : parent.width * 0.5
-            height : 100
-            color: "#7c3e04"
+            anchors.leftMargin: parent.width *0.1
+            width : parent.width * 0.2
+            //height : parent.height*0.3
+            color: "transparent"
         }
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  bedroom" + " " + xPos + " " + yPos
+            positionLabel.text = positionLabel.text = "\n\n  Schlafzimmer" + " " + xPos + " " + yPos
             selectedRoom = objectName;
+            omaXpos = xPos;
+            omaYPos = yPos + bath.height + hall.height;
+            telefonState = true
+            houseState = "  normal"
         }
     }
     Room {
         id: livingRoom
         x: appWindow.width*2/4
         y: 0
-        objectName: "livingRoom"
+        objectName: "Wohnzimmer"
         width: appWindow.width/4
         height: appWindow.height
-        color: "#f76161"
-        border.color: "black"
-        border.width: 1
-        text : "livingroom"
+//        color: "#f76161"
+//        border.color: "black"
+//        border.width: 1
+        text : "Wohnzimmer"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
-        temperature : 20
 
         lightXpos: parent.x+10
         lightYpos: parent.y+10
 
-        Couch {
+        Image{
+            source: telefonState == true ? "images/Sound.png" : "images/mute.png"
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.025
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
+            anchors.bottomMargin: parent.height * 0.875
             anchors.right: parent.right
-            anchors.rightMargin: 30
-//           x: parent.width * 0.1
-//           y: parent.height * 0.90
-           width : parent.width * 0.8
-           height : 100
-           color: "#7c3e04"
+            anchors.rightMargin: parent.width*0.05
+
+            width: parent.width*0.15
+
+            fillMode: Image.PreserveAspectFit
+            smooth: true
+        }
+
+        Couch {
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.15
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height * 0.65
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width*0.1
+            width : parent.width * 0.15
+            color: "transparent"
         }
 
         Rectangle {
             id: televisionLR
-            anchors.bottom : parent.bottom
-            anchors.bottomMargin: 150;
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.2
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height * 0.6
             anchors.right: parent.right
-            anchors.rightMargin: 50
-            width: 100
-            height: 100
+            anchors.rightMargin: parent.width*0.25
+
+            width : parent.width * 0.15
+
             color: tvState === true ? "#0000FF" : "#000000"
+
+            rotation: 45
 
             Text {
                 id : textFieldTV
@@ -220,6 +267,8 @@ ApplicationWindow {
                 font.pointSize: 11; font.bold: false
                 color: "#FFFFFF"
                 text : "TV"
+
+                rotation: 360-45
             }
 
             MouseArea {
@@ -236,19 +285,13 @@ ApplicationWindow {
 
         onRoomClicked: {
             selectedRoom = objectName;
-            positionLabel.text = positionLabel.text = "\n\n  livingroom" + " " + xPos + " " + yPos
-            //bulpColor = "yellow"
+            positionLabel.text = positionLabel.text = "\n\n  Wohnzimmer" + " " + xPos + " " + yPos
+            omaXpos = xPos + bath.width + kitchen.width;
+            omaYPos = yPos;
+            telefonState = true
+            houseState = "  normal"
         }
     }
-
-//    Info {
-//        x: appWindow.width*3/4
-//        y: 0
-//        width: appWindow.width*1/4
-//        height: appWindow.height/2
-
-////        model: AAAAAAAAAAA{}
-//    }
 
     Slider {
         id: slider
@@ -257,11 +300,28 @@ ApplicationWindow {
         value: 12
         stepSize: 1
         tickmarksEnabled: true
-        anchors.bottom : parent.bottom
-        anchors.bottomMargin: 10;
-        anchors.right: parent.right
-        anchors.rightMargin: 50
-        onValueChanged: curTime = value
+        anchors.bottom : infoPanel.bottom
+        anchors.bottomMargin: infoPanel.height*0.05;
+        anchors.right: infoPanel.right
+        anchors.rightMargin: infoPanel.width*0.1
+        anchors.left: infoPanel.left
+        anchors.leftMargin: infoPanel.width*0.1
+
+        onValueChanged: {
+            curTime = value
+
+            if((curTime>= 7) && (curTime <=22))
+            {
+                textColor = "#800000"
+                temperature = 22
+            }
+            else
+            {
+                textColor = "blue"
+                temperature = 19
+            }
+
+        }
 
 
         Label {
@@ -271,15 +331,17 @@ ApplicationWindow {
 //            anchors.rightMargin: 50
 
             text : curTime + ":00 Uhr"
+            font.pointSize: 14
         }
 
     }
 
     InfoPanel {
+        id: infoPanel
         x: appWindow.width*3/4
         y: 0
         width: appWindow.width*1/4
-        height: appWindow.height*3/4
+        height: appWindow.height
 
         Label {
             id: positionLabel

@@ -45,5 +45,6 @@ int main(int argc, char *argv[])
 {
     QtQuickControlsApplication app(argc, argv);
     QQmlApplicationEngine engine(QUrl("qrc:/main.qml"));
+
     return app.exec();
 }

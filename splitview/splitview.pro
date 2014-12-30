@@ -11,7 +11,8 @@ OTHER_FILES += \
     Info.qml \
     Couch.qml \
     InfoPanel.qml \
-    Bed.qml
+    Bed.qml \
+    Oma.qml
 
 RESOURCES += \
     resources.qrc

@@ -15,59 +15,104 @@ Column {
     Column {
         id : tempCol
         Label {
-            text : " room temperatures:"
-            font.pointSize: 11
-            color: "#0000F0"
+            text : " Raum Temperaturen:"
+            lineHeight: 1.2
+            font.pointSize: 14
+            font.bold: true
         }
 
         Label {
             id : tempBath
-            text: "  bath: " + bath.temperature + "°C"
+            text: "  Bad: " + temperature + "°C"
+            lineHeight: 1.2
+            font.pointSize: 14
+            color: textColor
         }
         Label {
             id : tempKitchen
-            text: "  kitchen: " + kitchen.temperature + "°C"
+            text: "  Küche: " + temperature + "°C"
+            lineHeight: 1.2
+            font.pointSize: 14
+            color: textColor
         }
         Label {
             id : tempHall
-            text: "  hall: " + hall.temperature + "°C"
+            text: "  Flur: " + temperature + "°C"
+            lineHeight: 1.2
+            font.pointSize: 14
+            color: textColor
         }
         Label {
             id : tempBedroom
-            text: "  bedroom: " + bedRoom.temperature + "°C"
+            text: "  Schlafzimmer: " + temperature + "°C"
+            lineHeight: 1.2
+            font.pointSize: 14
+            color: textColor
         }
         Label {
             id : tempLivingroom
-            text: "  livingroom: " + livingRoom.temperature + "°C"
+            text: "  Wohnzimmer: " + temperature + "°C"
+            lineHeight: 1.2
+            font.pointSize: 14
+            color: textColor
         }
     }
 
     Column {
         id : positionSensor
         Label {
-            text : " position Sensor:"
-            font.pointSize: 11
-            color: "#0000F0"
+            text : "\n Bewegungsmelder:"
+            lineHeight: 1.2
+            font.pointSize: 14
+            font.bold: true
         }
 
         Label {
-            text: "  poition sensor: " + selectedRoom
+            text: "  Bewegungsmelder: " + selectedRoom
+            lineHeight: 1.2
+            font.pointSize: 14
         }
     }
 
     Column {
         id: multimediaStatus
         Label {
-            text: " multimedia Status:"
-            font.pointSize: 11
-            color: "#0000F0"
+            text: "\n Multimedia Status:"
+            lineHeight: 1.2
+            font.pointSize: 14
+            font.bold: true
         }
 
         Label {
-            text: "  television: " + tvState
+            text: tvState === true ? "  Fernseher: an" : "  Fernseher: aus"
+            lineHeight: 1.2
+            font.pointSize: 14
         }
         Label {
-            text: "  radio: "
+            text: radioState === true ? "  Radio: an" : "  Radio: aus"
+            lineHeight: 1.2
+            font.pointSize: 14
+        }
+        Label {
+            text: telefonState === true ? "  Telefon: laut" : "  Telefon: Bitte nicht stören"
+            lineHeight: 1.2
+            font.pointSize: 14
+        }
+    }
+
+    Column {
+        id: houseStatus
+        Label {
+            text: "\n Haus Status:"
+            lineHeight: 1.2
+            font.pointSize: 14
+            font.bold: true
+        }
+
+        Label {
+            text: houseState
+            lineHeight: 1.2
+            font.pointSize: 14
         }
     }
 }

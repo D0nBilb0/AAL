@@ -1,13 +1,12 @@
 import QtQuick 2.0
 
-//Item {
-Rectangle{
+Item {
+//Rectangle{
 
     property alias text: textField.text
     property alias lightXpos: lightBulp.x
     property alias lightYpos: lightBulp.y
     property alias bulpColor : lightBulp.color
-    property int temperature
 
     signal roomClicked(double xPos, double yPos)
 
@@ -23,7 +22,7 @@ Rectangle{
         id : textField
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        font.pointSize: 12; font.bold: false
+        font.pointSize: 16; font.bold: true
     }
 
     Rectangle {

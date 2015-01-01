@@ -1,19 +1,9 @@
 QT += qml quick
 TARGET = splitview
-!no_desktop: QT += widgets
 
 include(src/src.pri)
-include(./shared/shared.pri)
 
-OTHER_FILES += \
-    main.qml \
-    Room.qml \
-    Info.qml \
-    Couch.qml \
-    InfoPanel.qml \
-    Bed.qml \
-    Oma.qml \
-    Badewanne.qml
+OTHER_FILES +=
 
 RESOURCES += \
     resources.qrc

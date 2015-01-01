@@ -13,5 +13,6 @@
         <file>images/mute.png</file>
         <file>images/Sound.png</file>
         <file>images/maxresdefault.jpg</file>
+        <file>Badewanne.qml</file>
     </qresource>
 </RCC>

@@ -107,11 +107,16 @@ release/qrc_resources.cpp: ../splitview/resources.qrc \
 		../splitview/Bed.qml \
 		../splitview/Room.qml \
 		../splitview/InfoPanel.qml \
+		../splitview/Badewanne.qml \
 		../splitview/Info.qml \
 		../splitview/Oma.qml \
 		../splitview/Couch.qml \
 		../splitview/main.qml \
+		../splitview/images/Grandma.png \
+		../splitview/images/maxresdefault.jpg \
+		../splitview/images/mute.png \
 		../splitview/images/AAL_Grundriss_clear.png \
+		../splitview/images/Sound.png \
 		../splitview/images/Grundriss.png
 	E:\Qt\5.3\mingw482_32\bin\rcc.exe -name resources ..\splitview\resources.qrc -o release\qrc_resources.cpp
 

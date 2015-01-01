@@ -32,6 +32,7 @@ Rectangle {
                    selectedRoom = "Wohnzimmer "
                    tvState = false
                    telefonState = false
+                   radioState = false
                    houseState = "  Ruhemodus Wohnzimmer"
                }
                else {

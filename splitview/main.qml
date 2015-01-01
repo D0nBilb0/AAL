@@ -59,6 +59,7 @@ ApplicationWindow {
     property bool telefonState: true
     property string houseState: "  normal"
     property int curTime: 12
+    property int minutes : 0
     property string textColor: "black"
     property int temperature: 22
     property int omaXpos: width * 0.1
@@ -107,6 +108,21 @@ ApplicationWindow {
         lightXpos: parent.x+10
         lightYpos: parent.y+10
 
+        Label {
+            id: bathTimeLabel
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.33
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height * 0.7
+            anchors.right: parent.right
+            anchors.rightMargin: parent.width*0.05
+
+            width: parent.width * 0.1
+
+            text:  minutes + ":00"
+            font.pointSize: 14
+        }
+
         onRoomClicked: {
             positionLabel.text = positionLabel.text = "\n\n  Bad" + " " + xPos + " " + yPos
             selectedRoom = objectName;
@@ -116,6 +132,7 @@ ApplicationWindow {
             houseState = "  normal"
         }
     }
+
     Room {
         id: kitchen
         x: appWindow.width/4
@@ -283,6 +300,41 @@ ApplicationWindow {
             }
         }
 
+        Rectangle {
+            id: radioLR
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.6
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height * 0.35
+            anchors.left: parent.left
+            anchors.leftMargin: parent.width*0.01
+
+            width : parent.width * 0.15
+
+            color: radioState === true ? "#00FFFF" : "#000000"
+
+            Text {
+                id : textFieldRadio
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                font.pointSize: 11; font.bold: false
+                color: "#FFFFFF"
+                text : "Radio"
+            }
+
+            MouseArea {
+                id: mouseAreaRadio
+                anchors.fill: parent
+                onClicked: {
+                        if (radioState === true)
+                            radioState = false
+                        else
+                            radioState = true
+                    }
+            }
+        }
+
+
         onRoomClicked: {
             selectedRoom = objectName;
             positionLabel.text = positionLabel.text = "\n\n  Wohnzimmer" + " " + xPos + " " + yPos
@@ -334,6 +386,17 @@ ApplicationWindow {
             font.pointSize: 14
         }
 
+    }
+
+    Badewanne {
+        anchors.top: bath.top
+        anchors.topMargin: bath.height * 0.55
+        anchors.bottom: bath.bottom
+        anchors.bottomMargin: bath.height * 0.05
+        anchors.left: bath.left
+        anchors.leftMargin: bath.width*0.07
+
+        width : bath.width * 0.12
     }
 
     InfoPanel {

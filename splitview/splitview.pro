@@ -12,7 +12,8 @@ OTHER_FILES += \
     Couch.qml \
     InfoPanel.qml \
     Bed.qml \
-    Oma.qml
+    Oma.qml \
+    Badewanne.qml
 
 RESOURCES += \
     resources.qrc

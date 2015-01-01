@@ -94,7 +94,23 @@ Column {
             font.pointSize: 14
         }
         Label {
-            text: telefonState === true ? "  Telefon: laut" : "  Telefon: Bitte nicht stören"
+            text: telefonState === true ? "  Telefon: laut" : "  Telefon: still"
+            lineHeight: 1.2
+            font.pointSize: 14
+        }
+    }
+
+    Column {
+        id: bathTimerText
+        Label {
+            text: "\n Badezimmer:"
+            lineHeight: 1.2
+            font.pointSize: 14
+            font.bold: true
+        }
+
+        Label {
+            text: "  Badezeit: " + minutes + " Minuten"
             lineHeight: 1.2
             font.pointSize: 14
         }

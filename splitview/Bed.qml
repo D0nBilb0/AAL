@@ -32,7 +32,16 @@ Rectangle {
                     selectedRoom = "Schlafzimmer "
                     tvState = false
                     telefonState = false
+                    radioState = false
                     houseState = "  Schlafmodus Bett"
+                }
+                else if ((curTime> 11) && (curTime < 14))
+                {
+                    selectedRoom = "Schlafzimmer "
+                    tvState = false
+                    telefonState = false
+                    radioState = false
+                    houseState = "  Ruhemodus Bett"
                 }
                 else {
                     selectedRoom = "Schlafzimmer"

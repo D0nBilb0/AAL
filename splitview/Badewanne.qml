@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.2
+import QtMultimedia 5.0
 
 Item {
     id: bathtub
@@ -10,29 +11,49 @@ Item {
         anchors.fill: parent
         onClicked: {
             selectedRoom = "Bad"
+            tvState = false
+            radioState = false
             if (bathing == false)
             {
-                bathTimer.restart();
-                bathing = true
+                 Qt.createComponent("myDialog.qml").createObject(appWindow, {});
+
+//                bathTimer.restart();
+//                bathing = true
+                personState = "  badend"
                 houseState = "  Oma badet"
                 omaXpos = bath.width * 0.05
                 omaYPos = bath.height * 0.5
             }
             else
             {
+                startBathing = false
                 bathing = false
                 minutes = 0
                 houseState = "  normal"
+                personState = "  stehend"
                 omaXpos = bath.width * 0.25
                 omaYPos = bath.height * 0.5
             }
         }
     }
 
+    SoundEffect {
+            id: playSound
+            source: "sounds/notify.wav"
+        }
+
     Timer {
         id:bathTimer
         interval: 1000; running: true; repeat: true;
-        onTriggered: {if(bathing)minutes++;}
+        onTriggered: {
+            if(bathing)
+            {
+                if((minutes == 0) || (minutes < 0))
+                    playSound.play();
+                else
+                    minutes--;
+            }
+        }
     }
 }
 

@@ -17,6 +17,7 @@ Rectangle {
                 omaYPos = livingRoom.height*0.025
                 telefonState = true
                 houseState = "  normal"
+                personState = "  sitzend"
             }
         }
         Button {
@@ -27,19 +28,20 @@ Rectangle {
             onClicked: {
                 omaXpos = bath.width + kitchen.width + livingRoom.width * 0.3
                 omaYPos = livingRoom.height*0.025
-               if ((curTime> 11) && (curTime < 14))
-               {
-                   selectedRoom = "Wohnzimmer "
-                   tvState = false
-                   telefonState = false
-                   radioState = false
-                   houseState = "  Ruhemodus Wohnzimmer"
-               }
-               else {
-                   selectedRoom = "Wohnzimmer"
-                   telefonState = true
-                   houseState = "  normal"
-               }
+                personState = "  liegend"
+                if ((curTime>= 11) && (curTime <= 17))
+                {
+                    selectedRoom = "Wohnzimmer "
+                    tvState = false
+                    telefonState = false
+                    radioState = false
+                    houseState = "  Ruhemodus Wohnzimmer"
+                }
+                else {
+                    selectedRoom = "Wohnzimmer"
+                    telefonState = true
+                    houseState = "  normal"
+                }
 
             }
         }

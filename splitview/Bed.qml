@@ -16,7 +16,10 @@ Rectangle {
                 omaXpos = bedRoom.width * 0.01
                 omaYPos = bath.height + hall.height +  bedRoom.height* 0.25
                 telefonState = true
+                tvState = false
+                radioState = false
                 houseState = "  normal"
+                personState = "  sitzend"
             }
         }
         Button {
@@ -27,20 +30,19 @@ Rectangle {
             onClicked: {
                 omaXpos = bedRoom.width * 0.01
                 omaYPos = bath.height + hall.height +  bedRoom.height* 0.25
-                if ((curTime>= 22) || (curTime <= 7))
+                tvState = false
+                radioState = false
+                personState = "  liegend"
+                if ((curTime>= 22) || (curTime <= 6))
                 {
                     selectedRoom = "Schlafzimmer "
-                    tvState = false
                     telefonState = false
-                    radioState = false
                     houseState = "  Schlafmodus Bett"
                 }
-                else if ((curTime> 11) && (curTime < 14))
+                else if ((curTime>= 11) && (curTime <= 17))
                 {
                     selectedRoom = "Schlafzimmer "
-                    tvState = false
                     telefonState = false
-                    radioState = false
                     houseState = "  Ruhemodus Bett"
                 }
                 else {

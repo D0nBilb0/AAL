@@ -54,6 +54,8 @@ ApplicationWindow {
     id: appWindow
 
     property string selectedRoom : "Flur"
+    property bool startBathing : false
+    property string personState : "  stehend"
     property bool tvState: false
     property bool radioState: false
     property bool telefonState: true
@@ -105,8 +107,8 @@ ApplicationWindow {
         text : "Bad"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-        lightXpos: parent.x+10
-        lightYpos: parent.y+10
+        lightXpos: bath.x+ bath.width * 0.5
+        lightYpos: bath.y+ bath.height * 0.05
 
         Label {
             id: bathTimeLabel
@@ -129,6 +131,9 @@ ApplicationWindow {
             omaXpos = xPos;
             omaYPos = yPos;
             telefonState = true
+            tvState = false
+            radioState = false
+            personState = "  stehend"
             houseState = "  normal"
         }
     }
@@ -147,7 +152,7 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
         lightXpos: parent.x+10
-        lightYpos: parent.y+10
+        lightYpos: parent.y+ parent.height * 0.15
 
         onRoomClicked: {
             positionLabel.text = positionLabel.text = "\n\n  Küche" + " " + xPos + " " + yPos
@@ -155,6 +160,9 @@ ApplicationWindow {
             omaXpos = xPos + bath.width;
             omaYPos = yPos;
             telefonState = true
+            tvState = false
+            radioState = false
+            personState = "  stehend"
             houseState = "  normal"
         }
     }
@@ -171,8 +179,8 @@ ApplicationWindow {
         text : "Flur"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-        lightXpos: parent.x+10
-        lightYpos: parent.y+10
+        lightXpos: parent.x + parent.width * 0.01
+        lightYpos: parent.y + 15
 
         onRoomClicked: {
             positionLabel.text = positionLabel.text = "\n\n  Flur" + " " + xPos + " " + yPos
@@ -180,6 +188,9 @@ ApplicationWindow {
             omaXpos = xPos;
             omaYPos = yPos + bath.height;
             telefonState = true
+            tvState = false
+            radioState = false
+            personState = "  stehend"
             houseState = "  normal"
         }
     }
@@ -196,8 +207,8 @@ ApplicationWindow {
         text : "Schlafzimmer"
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
-        lightXpos: parent.x+10
-        lightYpos: parent.y+10
+        lightXpos: parent.x + parent.width * 0.01
+        lightYpos: parent.y+7
 
         Bed {
             anchors.bottom: parent.bottom
@@ -217,6 +228,9 @@ ApplicationWindow {
             omaXpos = xPos;
             omaYPos = yPos + bath.height + hall.height;
             telefonState = true
+            tvState = false
+            radioState = false
+            personState = "  stehend"
             houseState = "  normal"
         }
     }
@@ -234,7 +248,7 @@ ApplicationWindow {
         bulpColor: selectedRoom === objectName ? "yellow" : "white"
 
         lightXpos: parent.x+10
-        lightYpos: parent.y+10
+        lightYpos: parent.y+ parent.height*0.75
 
         Image{
             source: telefonState == true ? "images/Sound.png" : "images/mute.png"
@@ -292,11 +306,15 @@ ApplicationWindow {
                 id: mouseAreaTV
                 anchors.fill: parent
                 onClicked: {
+                    if ((selectedRoom == "Wohnzimmer") || (selectedRoom == "Wohnzimmer "))
+                    {
                         if (tvState === true)
                             tvState = false
                         else
                             tvState = true
                     }
+
+                }
             }
         }
 
@@ -326,11 +344,14 @@ ApplicationWindow {
                 id: mouseAreaRadio
                 anchors.fill: parent
                 onClicked: {
+                    if ((selectedRoom == "Wohnzimmer") || (selectedRoom == "Wohnzimmer "))
+                    {
                         if (radioState === true)
                             radioState = false
                         else
                             radioState = true
                     }
+                }
             }
         }
 
@@ -342,6 +363,7 @@ ApplicationWindow {
             omaYPos = yPos;
             telefonState = true
             houseState = "  normal"
+            personState = "  stehend"
         }
     }
 
@@ -362,7 +384,7 @@ ApplicationWindow {
         onValueChanged: {
             curTime = value
 
-            if((curTime>= 7) && (curTime <=22))
+            if((curTime> 6) && (curTime < 22))
             {
                 textColor = "#800000"
                 temperature = 22
@@ -370,7 +392,7 @@ ApplicationWindow {
             else
             {
                 textColor = "blue"
-                temperature = 19
+                temperature = 18
             }
 
         }

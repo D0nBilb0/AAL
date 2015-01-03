@@ -72,6 +72,12 @@ Column {
             lineHeight: 1.2
             font.pointSize: 14
         }
+
+        Label {
+            text: "  Personenstatus: " + personState
+            lineHeight: 1.2
+            font.pointSize: 14
+        }
     }
 
     Column {

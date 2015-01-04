@@ -7,9 +7,9 @@ Item {
 
     // Add a simple animation to fade in the popup
     // let the opacity go from 0 to 1 in 400ms
-//    PropertyAnimation { target: dialogComponent; property: "opacity";
-//                                  duration: 400; from: 0; to: 1;
-//                                  easing.type: Easing.InOutQuad ; running: true }
+    PropertyAnimation { target: dialogComponent; property: "opacity";
+                                  duration: 400; from: 0; to: 1;
+                                  easing.type: Easing.InOutQuad ; running: true }
 
     // This rectange is the a overlay to partially show the parent through it
     // and clicking outside of the 'dialog' popup will do 'nothing'

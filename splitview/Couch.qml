@@ -14,7 +14,7 @@ Rectangle {
             onClicked: {
                 selectedRoom = parent.parent.parent.objectName
                 omaXpos = bath.width + kitchen.width + livingRoom.width * 0.3
-                omaYPos = livingRoom.height*0.025
+                omaYPos = livingRoom.height*0.015
                 telefonState = true
                 houseState = "  normal"
                 personState = "  sitzend"
@@ -27,7 +27,7 @@ Rectangle {
 
             onClicked: {
                 omaXpos = bath.width + kitchen.width + livingRoom.width * 0.3
-                omaYPos = livingRoom.height*0.025
+                omaYPos = livingRoom.height*0.015
                 personState = "  liegend"
                 if ((curTime>= 11) && (curTime <= 17))
                 {

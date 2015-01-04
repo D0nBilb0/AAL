@@ -7,7 +7,7 @@ Column {
 
     Column {
         Label {
-            text : "SPACE \n   \n    \n"
+            text : "SPACE \n   \n"
             color : "transparent"
         }
     }
@@ -68,15 +68,24 @@ Column {
         }
 
         Label {
-            text: "  Bewegungsmelder: " + selectedRoom
+            text: "  " + selectedRoom
             lineHeight: 1.2
             font.pointSize: 14
-        }
+        }        
+    }
 
+    Column {
+        id : personSLB
         Label {
-            text: "  Personenstatus: " + personState
+            text: "\n Personenstatus:"
             lineHeight: 1.2
             font.pointSize: 14
+            font.bold: true
+        }
+        Label {
+             text: personState
+             lineHeight: 1.2
+             font.pointSize: 14
         }
     }
 

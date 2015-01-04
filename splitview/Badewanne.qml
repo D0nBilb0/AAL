@@ -21,7 +21,7 @@ Item {
 //                bathing = true
                 personState = "  badend"
                 houseState = "  Oma badet"
-                omaXpos = bath.width * 0.05
+                omaXpos = (bath.width * 0.0175)
                 omaYPos = bath.height * 0.5
             }
             else
@@ -31,7 +31,7 @@ Item {
                 minutes = 0
                 houseState = "  normal"
                 personState = "  stehend"
-                omaXpos = bath.width * 0.25
+                omaXpos = (bath.width * 0.2)
                 omaYPos = bath.height * 0.5
             }
         }

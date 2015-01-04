@@ -85,7 +85,8 @@ ApplicationWindow {
         width : parent.width
         height: parent.height
 //        source : "images/AAL_Grundriss_clear.png"
-        source : "images/Grundriss.png"
+//        source : "images/Grundriss.png"
+        source : "images/Grundriss_clear_stripe.png"
     }
 
     Oma{
@@ -126,10 +127,10 @@ ApplicationWindow {
         }
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  Bad" + " " + xPos + " " + yPos
+            //positionLabel.text = positionLabel.text = "\n\n  Bad" + " " + xPos + " " + yPos
             selectedRoom = objectName;
-            omaXpos = xPos;
-            omaYPos = yPos;
+            omaXpos = xPos - omaImage.width*0.5;
+            omaYPos = yPos - omaImage.height*0.5;
             telefonState = true
             tvState = false
             radioState = false
@@ -155,10 +156,10 @@ ApplicationWindow {
         lightYpos: parent.y+ parent.height * 0.15
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  Küche" + " " + xPos + " " + yPos
+           // positionLabel.text = positionLabel.text = "\n\n  Küche" + " " + xPos + " " + yPos
             selectedRoom = objectName;
-            omaXpos = xPos + bath.width;
-            omaYPos = yPos;
+            omaXpos = (xPos + bath.width) - (omaImage.width*0.5);
+            omaYPos = yPos - omaImage.height*0.5;
             telefonState = true
             tvState = false
             radioState = false
@@ -183,10 +184,10 @@ ApplicationWindow {
         lightYpos: parent.y + 15
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  Flur" + " " + xPos + " " + yPos
+            //positionLabel.text = positionLabel.text = "\n\n  Flur" + " " + xPos + " " + yPos
             selectedRoom = objectName;
-            omaXpos = xPos;
-            omaYPos = yPos + bath.height;
+            omaXpos = xPos - omaImage.width*0.5;
+            omaYPos = (yPos + bath.height) - (omaImage.height*0.5);
             telefonState = true
             tvState = false
             radioState = false
@@ -223,10 +224,10 @@ ApplicationWindow {
         }
 
         onRoomClicked: {
-            positionLabel.text = positionLabel.text = "\n\n  Schlafzimmer" + " " + xPos + " " + yPos
+            //positionLabel.text = positionLabel.text = "\n\n  Schlafzimmer" + " " + xPos + " " + yPos
             selectedRoom = objectName;
-            omaXpos = xPos;
-            omaYPos = yPos + bath.height + hall.height;
+            omaXpos = xPos - (omaImage.width * 0.5);
+            omaYPos = (yPos + bath.height + hall.height) - (omaImage.height*0.5);
             telefonState = true
             tvState = false
             radioState = false
@@ -251,13 +252,13 @@ ApplicationWindow {
         lightYpos: parent.y+ parent.height*0.75
 
         Image{
-            source: telefonState == true ? "images/Sound.png" : "images/mute.png"
+            source: telefonState == true ? "images/phone_sound.png" : "images/phone_mute.png"
             anchors.top: parent.top
             anchors.topMargin: parent.height * 0.025
             anchors.bottom: parent.bottom
             anchors.bottomMargin: parent.height * 0.875
             anchors.right: parent.right
-            anchors.rightMargin: parent.width*0.05
+            anchors.rightMargin: parent.width*0.035
 
             width: parent.width*0.15
 
@@ -358,9 +359,9 @@ ApplicationWindow {
 
         onRoomClicked: {
             selectedRoom = objectName;
-            positionLabel.text = positionLabel.text = "\n\n  Wohnzimmer" + " " + xPos + " " + yPos
-            omaXpos = xPos + bath.width + kitchen.width;
-            omaYPos = yPos;
+            //positionLabel.text = positionLabel.text = "\n\n  Wohnzimmer" + " " + xPos + " " + yPos
+            omaXpos = (xPos + bath.width + kitchen.width) - (omaImage.width * 0.5);
+            omaYPos = yPos - (omaImage.height * 0.5);
             telefonState = true
             houseState = "  normal"
             personState = "  stehend"
@@ -428,10 +429,10 @@ ApplicationWindow {
         width: appWindow.width*1/4
         height: appWindow.height
 
-        Label {
-            id: positionLabel
-            text: "\n\n  programm running"
-        }
+//        Label {
+//            id: positionLabel
+//            text: "\n\n  programm running"
+//        }
     }
 
 }

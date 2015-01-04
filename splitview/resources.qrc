@@ -4,10 +4,8 @@
         <file>Room.qml</file>
         <file>Info.qml</file>
         <file>Couch.qml</file>
-        <file>images/AAL_Grundriss_clear.png</file>
         <file>InfoPanel.qml</file>
         <file>Bed.qml</file>
-        <file>images/Grundriss.png</file>
         <file>Oma.qml</file>
         <file>images/Grandma.png</file>
         <file>images/mute.png</file>
@@ -17,5 +15,10 @@
         <file>sounds/notify.wav</file>
         <file>sounds/Windows Ding.wav</file>
         <file>myDialog.qml</file>
+        <file>images/grandma_clear.png</file>
+        <file>images/Grundriss_clear.png</file>
+        <file>images/Grundriss_clear_stripe.png</file>
+        <file>images/phone_mute.png</file>
+        <file>images/phone_sound.png</file>
     </qresource>
 </RCC>
